@@ -505,7 +505,7 @@ std::error_code WalletService::resetWallet() {
   try {
     System::EventLock lk(readyEvent);
 
-    logger(Logging::INFO, Logging::BRIGHT_WHITE) << "Reseting wallet";
+    logger(Logging::INFO, Logging::BRIGHT_WHITE) << "Resetting wallet";
 
     if (!inited) {
       logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Reset impossible: Wallet Service is not initialized";
@@ -515,10 +515,10 @@ std::error_code WalletService::resetWallet() {
     reset();
     logger(Logging::INFO, Logging::BRIGHT_WHITE) << "Wallet has been reset";
   } catch (std::system_error& x) {
-    logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while reseting wallet: " << x.what();
+    logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while resetting wallet: " << x.what();
     return x.code();
   } catch (std::exception& x) {
-    logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while reseting wallet: " << x.what();
+    logger(Logging::WARNING, Logging::BRIGHT_YELLOW) << "Error while resetting wallet: " << x.what();
     return make_error_code(DynexCN::error::INTERNAL_WALLET_ERROR);
   }
 
